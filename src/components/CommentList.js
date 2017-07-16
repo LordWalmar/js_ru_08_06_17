@@ -4,6 +4,7 @@ import Loader from './Loader'
 import Comment from './Comment'
 import CommentForm from './CommentForm'
 import toggleOpen from '../decorators/toggleOpen'
+import LocalizationText from './LocalizationText'
 import { loadArticleComments } from '../AC'
 import { connect } from 'react-redux'
 
@@ -23,7 +24,9 @@ class CommentList extends Component {
     render() {
         const {article, isOpen, toggleOpen} = this.props
         console.log('---', 3, this.context)
-        const text = isOpen ? 'hide comments' : 'show comments'
+        const text = isOpen
+            ? <LocalizationText>hide comments</LocalizationText>
+            : <LocalizationText>show comments</LocalizationText>
         return (
             <div>
                 <h3>User: {this.context.user}</h3>
