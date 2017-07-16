@@ -14,3 +14,26 @@ export const LOAD_COMMENTS_FOR_PAGE = 'LOAD_COMMENTS_FOR_PAGE'
 export const START = '_START'
 export const SUCCESS = '_SUCCESS'
 export const FAIL = '_FAIL'
+
+export const DICTIONARIES = {
+    en: {
+        'delete me': 'delete me',
+        'show comments': 'show comments',
+        'hide comments': 'hide comments',
+        'No comments yet': 'No comments yet',
+        'Loading': 'Loading',
+        'Main menu': 'Main menu',
+        'close': 'close',
+        'open': 'open'
+    },
+    ru: {
+        'delete me': 'удалить',
+        'show comments': 'показать комментарии',
+        'hide comments': 'скрыть комментарии',
+        'No comments yet': 'Пока нет комментариев',
+        'Loading': 'Загрузка',
+        'Main menu': 'Главное меню',
+        'close': 'Закрыть',
+        'open': 'открыть'
+    }
+};

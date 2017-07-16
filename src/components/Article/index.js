@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import CommentList from '../CommentList'
 import { CSSTransitionGroup } from 'react-transition-group'
 import {deleteArticle, loadArticle} from '../../AC'
+import LocalizationText from '../LocalizationText'
 import Loader from '../Loader'
 import './style.css'
 
@@ -45,9 +46,12 @@ class Article extends Component {
             <div ref = {this.setContainerRef}>
                 <h3>{article.title}</h3>
                 <button onClick = {toggleOpen}>
-                    {isOpen ? 'close' : 'open'}
+                    {isOpen
+                        ? <LocalizationText>close</LocalizationText>
+                        : <LocalizationText>open</LocalizationText>
+                    }
                 </button>
-                <button onClick = {this.handleDelete}>delete me</button>
+                <button onClick = {this.handleDelete}><LocalizationText>delete me</LocalizationText></button>
                 <CSSTransitionGroup
                     transitionName = 'article'
                     transitionAppear

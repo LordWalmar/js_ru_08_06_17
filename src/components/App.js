@@ -10,6 +10,8 @@ import Counter from './Counter'
 import 'react-select/dist/react-select.css'
 import {Switch, Route, Redirect, NavLink} from 'react-router-dom'
 import {ConnectedRouter} from 'react-router-redux'
+import {DICTIONARIES} from '../constants'
+import LocalizationText from './LocalizationText'
 import history from '../history'
 
 class App extends Component {
@@ -18,17 +20,20 @@ class App extends Component {
     };
 
     static childContextTypes = {
-        user: PropTypes.string
+        user: PropTypes.string,
+        dictionary: PropTypes.shape({})
     }
 
     getChildContext() {
         return {
-            user: this.state.username
+            user: this.state.username,
+            dictionary: DICTIONARIES[this.state.language]
         }
     }
 
     state = {
-        username: ''
+        username: '',
+        language: 'ru'
     }
 
     render() {
@@ -37,7 +42,13 @@ class App extends Component {
             <ConnectedRouter history = {history}>
                 <div>
                     <div>
-                        <h2>Main menu</h2>
+                        <button onClick = {this.changeLanguage('en')}>English</button>
+                        <button onClick = {this.changeLanguage('ru')}>Russian</button>
+                    </div>
+                    <div>
+                        <h2>
+                            <LocalizationText>Main menu</LocalizationText>
+                        </h2>
                         <div><NavLink activeStyle = {{color: 'red'}} to="/counter">Counter</NavLink></div>
                         <div><NavLink activeStyle = {{color: 'red'}} to="/filters">Filters</NavLink></div>
                         <div><NavLink activeStyle = {{color: 'red'}} to="/articles">Articles</NavLink></div>
@@ -58,6 +69,8 @@ class App extends Component {
     }
 
     handleUserChange = (username) => this.setState({ username })
+
+    changeLanguage = language => ev => this.setState({ language })
 }
 
 export default App
